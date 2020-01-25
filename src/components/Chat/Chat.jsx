@@ -1,5 +1,6 @@
 import React from 'react';
 import Message from '../Message';
+import "./Chat.css"
 
 class Chat extends React.Component {
   state = {
@@ -23,10 +24,15 @@ class Chat extends React.Component {
     return (
       <div className="chat">
         
+        <div className="message-list">
+          <div className="messages" >
+          {messages.map(({text},index)=>(<Message text={text} key={index }/> ))}
+            
+          </div>
+        </div>
         
-        {messages.map(({text},index)=>(<Message text={text} key={index }/> ))}
         
-        <input type="text" value={messageInput} onChange={this.changeInputMessage} onKeyPress={this.sendMessageOnEnter} className="input-message" />
+        <input  className={"input-message"} type="text" value={messageInput} onChange={this.changeInputMessage} onKeyPress={this.sendMessageOnEnter} className="input-message" />
       </div>
     );
   }
